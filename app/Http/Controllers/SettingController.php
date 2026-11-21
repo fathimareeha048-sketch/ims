@@ -11,6 +11,17 @@ class SettingController extends Controller
     {
         $domain = request()->getHost();
         $setting = Setting::where('domain', $domain)->first();
+
+        // First time ku setting illa na error varama irukka
+        if (!$setting) {
+            $setting = new Setting([
+                'institute_name' => '',
+                'domain' => $domain,
+                'primary_color' => '#4F46E5',
+                'logo_path' => null
+            ]);
+        }
+
         return view('settings.index', compact('setting'));
     }
 
@@ -40,6 +51,6 @@ class SettingController extends Controller
             $data
         );
 
-        return back()->with('success', 'Settings saved thanga!');
+        return back()->with('success', 'Settings saved ');
     }
 }

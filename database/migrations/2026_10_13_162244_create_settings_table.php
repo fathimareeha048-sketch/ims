@@ -10,16 +10,12 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-    Schema::create('settings', function (Blueprint $table) {
-        $table->id();
-        $table->string('institute_name')->nullable();
-        $table->string('logo_path')->nullable();
-        $table->string('primary_color')->default('#4F46E5');
-        $table->string('domain')->nullable();
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('settings', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
